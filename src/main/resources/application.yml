@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8083
 spring:
   application:
     name: api-gateway
@@ -17,4 +17,3 @@ zuul:
     rating-service: /rating-service/**
     payment-service: /payment-service/**
     catalogue-service: /catalogue-service/**
-    checkout-service: /checkout-service/**
