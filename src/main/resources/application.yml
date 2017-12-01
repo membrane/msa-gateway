@@ -1,0 +1,20 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    consul:
+      discovery:
+        health-check-path: /info
+management:
+  security:
+    enabled: false
+
+zuul:
+  ignored-services: '*'
+  routes:
+    rating-service: /rating-service/**
+    payment-service: /payment-service/**
+    catalogue-service: /catalogue-service/**
+    checkout-service: /checkout-service/**
