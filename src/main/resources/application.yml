@@ -7,6 +7,12 @@ spring:
     consul:
       discovery:
         health-check-path: /info
+  sleuth:
+    web:
+      skipPattern: (^watch.*|.*watch$|.*info$)
+    sampler:
+      percentage: 1.0
+
 management:
   security:
     enabled: false
@@ -17,3 +23,4 @@ zuul:
     rating-service: /rating-service/**
     payment-service: /payment-service/**
     catalogue-service: /catalogue-service/**
+    checkout-service: /checkout-service/**
