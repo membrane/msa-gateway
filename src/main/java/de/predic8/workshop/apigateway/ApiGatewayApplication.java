@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.sleuth.metric.SpanMetricReporter;
 import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
@@ -21,35 +22,11 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableZuulProxy
 @SpringBootApplication
+@EnableHystrixDashboard
 public class ApiGatewayApplication {
-
-	@Autowired
-	public DiscoveryClient discovery;
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
-	@Bean
-	@ConditionalOnMissingBean
-	public ZipkinSpanReporter reporter(SpanMetricReporter reporter, ZipkinProperties zipkin,
-									   ZipkinRestTemplateCustomizer customizer) {
-		RestTemplate rest = new RestTemplate();
-		customizer.customize(rest);
-
-		List<ServiceInstance> instances = discovery.getInstances("zipkin");
-
-		if (instances.size() == 0 ) {
-			System.out.println("Please start zipkin Server!");
-			return null;
-		}
-		ServiceInstance instance = instances.get(0);
-
-		String uri = instance.getUri().toString();
-
-		System.out.println("instance.getUri().toString() = " + uri);
-
-		return new HttpZipkinSpanReporter(rest, uri, zipkin.getFlushInterval(), reporter);
-	}
 }

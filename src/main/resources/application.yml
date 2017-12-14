@@ -1,8 +1,9 @@
 server:
   port: 8083
+
 spring:
   application:
-    name: api-gateway
+    name: gateway
   cloud:
     consul:
       discovery:
@@ -20,7 +21,8 @@ management:
 zuul:
   ignored-services: '*'
   routes:
-    rating-service: /rating-service/**
-    payment-service: /payment-service/**
-    catalogue-service: /catalogue-service/**
-    checkout-service: /checkout-service/**
+    rating: /rating/**
+    payment: /payment/**
+    catalogue: /catalogue/**
+    checkout: /checkout/**
+    stock: /stock/**
