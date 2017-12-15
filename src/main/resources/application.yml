@@ -14,6 +14,9 @@ management:
 zuul:
   ignored-services: '*'
   routes:
-    rating-service: /rating-service/**
-    payment-service: /payment-service/**
-    catalogue-service: /catalogue-service/**
+    rating: /catalogue/**
+    payment: /payment/**
+    catalogue: /payment/**
+    history: /history/**
+    checkout: /checkout/**
+    admin: /admin/**

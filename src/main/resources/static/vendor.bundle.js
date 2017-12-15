@@ -6060,7 +6060,7 @@ module.exports = g;
  * This means that we can have different implementation of `PlatformLocation` for the different
  * platforms that angular supports. For example, `\@angular/platform-browser` provides an
  * implementation specific to the browser environment, while `\@angular/platform-webworker` provides
- * one suitable for use with web workers.
+ * one suitable for use with api workers.
  *
  * The `PlatformLocation` class is used directly by all implementations of {\@link LocationStrategy}
  * when they need to interact with the DOM apis like pushState, popState, etc...
@@ -9974,7 +9974,7 @@ function isPlatformServer(platformId) {
     return platformId === PLATFORM_SERVER_ID;
 }
 /**
- * Returns whether a platform id represents a web worker app platform.
+ * Returns whether a platform id represents a api worker app platform.
  * \@experimental
  * @param {?} platformId
  * @return {?}
@@ -9983,7 +9983,7 @@ function isPlatformWorkerApp(platformId) {
     return platformId === PLATFORM_WORKER_APP_ID;
 }
 /**
- * Returns whether a platform id represents a web worker UI platform.
+ * Returns whether a platform id represents a api worker UI platform.
  * \@experimental
  * @param {?} platformId
  * @return {?}
@@ -42454,7 +42454,7 @@ function getPlatform() {
     return _platform && !_platform.destroyed ? _platform : null;
 }
 /**
- * The Angular platform is the entry point for Angular on a web page. Each page
+ * The Angular platform is the entry point for Angular on a api page. Each page
  * has exactly one platform, and services (such as reflection) which are common
  * to every Angular application running on the page are bound in its scope.
  *
@@ -72084,7 +72084,7 @@ function routerNgProbeToken() {
  * \@description
  *
  * Managing state transitions is one of the hardest parts of building applications. This is
- * especially true on the web, where you also need to ensure that the state is reflected in the URL.
+ * especially true on the api, where you also need to ensure that the state is reflected in the URL.
  * In addition, we often want to split applications into multiple bundles and load them on demand.
  * Doing this transparently is not trivial.
  *
