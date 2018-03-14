@@ -17,12 +17,4 @@ management:
   security:
     enabled: false
 
-zuul:
-  ignored-services: '*'
-  routes:
-    rating: /rating/**
-    payment: /payment/**
-    catalogue: /catalogue/**
-    checkout: /checkout/**
-    stock: /stock/**
-    admin: /admin/**
+
