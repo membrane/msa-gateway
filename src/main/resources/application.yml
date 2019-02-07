@@ -1,20 +1,21 @@
 server:
   port: 8083
+
 spring:
   application:
     name: api-gateway
-  cloud:
-    consul:
-      discovery:
-        health-check-path: /info
-  sleuth:
-    web:
-      skipPattern: (^watch.*|.*watch$|.*info$)
-    sampler:
-      percentage: 1.0
 
 management:
-  security:
-    enabled: false
+  endpoint:
+    health:
+      show-details: always
+
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+    prometheus:
+      enabled: true
 
 
