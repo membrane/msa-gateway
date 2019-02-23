@@ -15,7 +15,5 @@ management:
       exposure:
         include: "*"
 
-    prometheus:
-      enabled: true
 
 

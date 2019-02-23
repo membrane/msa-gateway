@@ -1,4 +1,4 @@
-package de.predic8.workshop.apigateway;
+package de.predic8.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
